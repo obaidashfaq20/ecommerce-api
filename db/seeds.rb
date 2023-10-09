@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+(0..10).each do |i|
+  product = Product.new
+  product.name = "product name: #{i}"
+  product.description = "product description: #{i}"
+  product.price = i * 3212
+  product.availability = i%2 == 0
+  product.save
+end
