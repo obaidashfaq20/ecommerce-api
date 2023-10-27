@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   devise :timeoutable
+  has_many :carts
+  has_many :products, through: :cart
   include Devise::JWT::RevocationStrategies::JTIMatcher
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
