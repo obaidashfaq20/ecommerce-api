@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+test_user = User.create(name: 'test account', email: 'test@gmail.com', password: 'Test@123')
+test_cart = Cart.create(user_id: test_user.id)
+
 (0..10).each do |i|
   product = Product.new
   product.name = "product name: #{i}"
@@ -14,3 +17,4 @@
   product.availability = i%2 == 0
   product.save
 end
+
