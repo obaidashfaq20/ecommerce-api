@@ -8,11 +8,16 @@ describe 'login api' do
       parameter email: :user, in: :body, schema: {
         type: :object,
         properties: {
-          email: { type: :string },
-          password: { type: :string }
-        
+          user: {
+            type: :object,
+            properties: {
+              email: { type: :string, default: 'test@gmail.com' },
+              password: { type: :string, default: 'Test@123' }
+            },
+            required: [ 'email', 'password' ]
+          }
         },
-        required: [ 'email', 'password' ]
+        required: [ 'user' ]
       }
 
       response '201', 'devise session created' do

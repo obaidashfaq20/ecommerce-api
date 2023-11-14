@@ -1,7 +1,7 @@
 ---
 openapi: 3.0.1
 info:
-  title: API V1
+  title: Ecommerce API Documentation
   version: v1
 paths:
   "/login":
@@ -21,24 +21,38 @@ paths:
             schema:
               type: object
               properties:
-                email:
-                  type: string
-                password:
-                  type: string
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      default: test@gmail.com
+                    password:
+                      type: string
+                      default: Test@123
+                  required:
+                  - email
+                  - password
               required:
-              - email
-              - password
+              - user
           application/xml:
             schema:
               type: object
               properties:
-                email:
-                  type: string
-                password:
-                  type: string
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      default: test@gmail.com
+                    password:
+                      type: string
+                      default: Test@123
+                  required:
+                  - email
+                  - password
               required:
-              - email
-              - password
+              - user
 servers:
 - url: http://{defaultHost}
   variables:
