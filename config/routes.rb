@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   get 'cart/products', to: 'carts#products', as: 'cart_products'
+  post 'cart_item/add_to_cart/:product_id', to: 'cart_items#add_to_cart', as: 'add_to_cart'
 end

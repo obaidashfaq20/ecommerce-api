@@ -1,5 +1,5 @@
 class CartItemsController < ApplicationController
-  before_action :set_cart_item, only: %i[ show update destroy ]
+  before_action :set_cart_item, only: %i[ show update ]
 
   # GET /cart_items
   def index
@@ -13,7 +13,7 @@ class CartItemsController < ApplicationController
     render json: @cart_item
   end
 
-  # POST /carts
+  # POST /cart_items
   def create
     @cart_item = CartItem.new(cart_item_params)
 
@@ -24,7 +24,7 @@ class CartItemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /carts/1
+  # PATCH/PUT /cart_items/1
   def update
     if @cart_item.update(cart_params)
       render json: @cart_item
@@ -33,9 +33,22 @@ class CartItemsController < ApplicationController
     end
   end
 
-  # DELETE /carts/1
+  # DELETE /cart_items/1
   def destroy
-    @cart_item.destroy
+    product = Product.find(params[:id])
+    cart_item = CartItem.find_by(product_id: product.id)
+    cart_item.destroy
+  end
+
+  # POST /cart_items/add_to_cart/:product_id
+  def add_to_cart
+    product = Product.find(params[:product_id])
+    cart_item = CartItem.new(product_id: product.id, cart: current_user.cart)
+    if cart_item.save
+      render json: cart_item, status: :created, location: cart_item
+    else
+      render json: cart_item.errors, status: :unprocessable_entity
+    end
   end
 
   private
