@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :carts
   resources :products
+  resources :cart_items
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -10,5 +11,5 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  # root "articles#index"
+  get 'cart/products', to: 'carts#products', as: 'cart_products'
 end
