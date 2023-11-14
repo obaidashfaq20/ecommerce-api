@@ -18,3 +18,4 @@ test_cart = Cart.create(user_id: test_user.id)
   product.save
 end
 
+cart_item = CartItem.create(product: Product.last, cart: Cart.last)
