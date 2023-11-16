@@ -15,6 +15,7 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'jsonapi-serializer'
 gem 'rswag'
+gem 'stripe'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

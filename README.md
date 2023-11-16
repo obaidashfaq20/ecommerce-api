@@ -1,7 +1,17 @@
-# Note
+# Note Swagger
 After adding spec run the following command to reflect changes in api-docs
 ```
 rails rswag:specs:swaggerize
+```
+
+# Note Stripe
+After adding stripe gem run irb to test the following
+```
+> irb
+require 'stripe'
+
+Stripe.api_key = 'sk_test_123...'
+Stripe::Customer.list()
 ```
 
 # README
