@@ -1,3 +1,9 @@
+# Note
+After adding spec run the following command to reflect changes in api-docs
+```
+rails rswag:specs:swaggerize
+```
+
 # README
 
 This README would normally document whatever steps are necessary to get the
