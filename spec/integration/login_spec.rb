@@ -20,9 +20,10 @@ describe 'login api' do
         required: [ 'user' ]
       }
 
-      response '201', 'devise session created' do
+      response '200', 'devise session created' do
         let(:user) { { email: 'test@gmail.com', password: 'Test@123' } }
         run_test!
+        header 'Authorization', type: :string
       end
 
       response '422', 'invalid request' do
