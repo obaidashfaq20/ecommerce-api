@@ -21,6 +21,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "pry"
   gem "rails-erd"
+  gem "dotenv-rails"
 end
 
 group :development do
@@ -28,4 +29,3 @@ group :development do
   # gem "spring"
   gem "rspec-rails"
 end
-
