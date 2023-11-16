@@ -11,8 +11,11 @@ paths:
       - Devise Session
       parameters: []
       responses:
-        '201':
+        '200':
           description: devise session created
+          headers:
+            Authorization:
+              type: string
         '422':
           description: invalid request
       requestBody:
@@ -53,8 +56,39 @@ paths:
                   - password
               required:
               - user
+  "/products":
+    get:
+      summary: Get all products
+      tags:
+      - Products
+      responses:
+        '200':
+          description: Fetch all Products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    price:
+                      type: double
+                    availability:
+                      type: boolean
+                    required:
+                  - id
+                  - patient_id
+                  - provider_id
+        '422':
+          description: invalid request
 servers:
 - url: http://{defaultHost}
   variables:
     defaultHost:
-      default: 127.0.0.1:3001
+      default: localhost:3001
