@@ -2,7 +2,8 @@ class PaymentsController < ApplicationController
   def create_payment_intent
     intent = Stripe::PaymentIntent.create(
       amount: params[:amount],
-      currency: 'usd'
+      currency: 'usd',
+      payment_method_types: ['card']
     )
 
     # We can find the entry for intent object here https://dashboard.stripe.com/test/events
