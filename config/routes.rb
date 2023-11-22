@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => '/api-docs'
   resources :carts
   resources :products
+  resources :orders, only: [:index]
   resources :cart_items
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
