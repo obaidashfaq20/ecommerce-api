@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :products
   resources :orders, only: [:index, :create, :show]
+  resources :order_items, only: [:index]
   resources :cart_items
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
   post 'cart_item/add_to_cart/:product_id', to: 'cart_items#add_to_cart', as: 'add_to_cart'
 
   post 'create_payment_intent', to: 'payments#create_payment_intent', as: 'create_payment_intent'
+  get 'orders/:id/order_items', to: 'order_items#order_items', as: 'current_order_items'
 end
