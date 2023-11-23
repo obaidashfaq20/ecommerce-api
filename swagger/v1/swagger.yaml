@@ -56,37 +56,6 @@ paths:
                   - password
               required:
               - user
-  "/products":
-    get:
-      summary: Get all products
-      tags:
-      - Products
-      responses:
-        '200':
-          description: Fetch all Products
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    description:
-                      type: string
-                    price:
-                      type: double
-                    availability:
-                      type: boolean
-                    required:
-                  - id
-                  - patient_id
-                  - provider_id
-        '422':
-          description: invalid request
 servers:
 - url: http://{defaultHost}
   variables:

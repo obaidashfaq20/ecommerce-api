@@ -43,6 +43,12 @@ class CartItemsController < ApplicationController
   # POST /cart_items/add_to_cart/:product_id
   def add_to_cart
     product = Product.find(params[:product_id])
+
+    if current_user.cart.nil?
+      # create cart
+      Cart.create!(user: current_user)
+    end
+
     cart_item = CartItem.new(product_id: product.id, cart: current_user.cart)
     if cart_item.save
       render json: cart_item, status: :created, location: cart_item
