@@ -10,6 +10,6 @@ class OrderItemsController < ApplicationController
   def order_items
     @order = Order.find(params[:id])
 
-    render json: @order.order_items
+    render json: @order.products
   end
 end
