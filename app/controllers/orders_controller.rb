@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
     @order = Order.new(user: current_user)
 
     if @order.save
+      create_order_items(@order)
       render json: @order, status: :created, location: @order
     else
       render json: @order.errors, status: :unprocessable_entity
@@ -28,5 +29,15 @@ class OrdersController < ApplicationController
 
   def set_order
     @order = Order.find(params[:id])
+  end
+
+  def cart_items
+    params[:cartItems]
+  end
+
+  def create_order_items(order)
+    cart_items.each do |product|
+      order.order_items.create!(product_id:product[:id])
+    end
   end
 end
