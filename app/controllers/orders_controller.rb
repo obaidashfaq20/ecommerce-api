@@ -40,6 +40,7 @@ class OrdersController < ApplicationController
   end
 
   def create_order_items(order)
+    order.processing!
     cart_items.each do |product|
       order.order_items.create!(product_id:product[:id])
     end
