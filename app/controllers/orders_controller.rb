@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
-    @order = Order.new(user: current_user)
+    @order = Order.new(user: current_user, payment_intent_id: payment_intent_id)
 
     if @order.save
       create_order_items(@order)
@@ -33,6 +33,10 @@ class OrdersController < ApplicationController
 
   def cart_items
     params[:cartItems]
+  end
+
+  def payment_intent_id
+    params[:payment_intent_id]
   end
 
   def create_order_items(order)
