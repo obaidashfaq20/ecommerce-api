@@ -14,7 +14,7 @@ test_cart = Cart.create(user_id: test_user.id)
   product.name = "product name: #{i}"
   product.description = "product description: #{i}"
   product.price = i * 3212
-  product.availability = i%2 == 0
+  product.availability = true
   product.save
 end
 
