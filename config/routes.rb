@@ -20,4 +20,6 @@ Rails.application.routes.draw do
 
   post 'create_payment_intent', to: 'payments#create_payment_intent', as: 'create_payment_intent'
   get 'orders/:id/order_items', to: 'order_items#order_items', as: 'current_order_items'
+
+  post 'stripe_webhook', to: 'payments#stripe_webhook', as: 'stripe_webhook'
 end
